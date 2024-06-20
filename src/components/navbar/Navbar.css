@@ -1,0 +1,28 @@
+.search-field {
+  display: none;
+  padding: 10px;
+  background-color: #343a40;
+  color: #f8f9fa;
+  position: fixed;
+  top: 56px; /* Adjust according to your navbar height */
+  width: 100%;
+  z-index: 1000;
+}
+
+.search-field.show {
+  display: block;
+}
+
+.content {
+  transition: margin-top 0.3s ease;
+}
+
+.content.move-down {
+  margin-top: 60px; /* Adjust this value according to the height of the search field */
+}
+
+@media (max-width: 992px) {
+  .search-field {
+    top: 112px; /* Adjust according to your navbar height on smaller screens */
+  }
+}
