@@ -1,12 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+// Define your API key directly here
+const apiKey = '530a9a76075f4b9b9c5a76a9e1975e0c';
+
 export const fetchNews = createAsyncThunk(
   'news/fetchNews',
   async ({ country, category, pageSize, page }, { rejectWithValue }) => {
-    const apiKey = import.meta.env.VITE_REACT_APP_NEWS_API_KEY;
-    if (!apiKey) {
-      return rejectWithValue('API Key is not defined.');
-    }
     const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&pageSize=${pageSize}&page=${page}`;
     try {
       const response = await fetch(url);
@@ -24,10 +23,6 @@ export const fetchNews = createAsyncThunk(
 export const searchNews = createAsyncThunk(
   'news/searchNews',
   async ({ country, category, pageSize, page, query }, { rejectWithValue }) => {
-    const apiKey = import.meta.env.VITE_REACT_APP_NEWS_API_KEY;
-    if (!apiKey) {
-      return rejectWithValue('API Key is not defined.');
-    }
     const url = `https://newsapi.org/v2/everything?q=${query}&apiKey=${apiKey}&pageSize=${pageSize}&page=${page}`;
     try {
       const response = await fetch(url);
